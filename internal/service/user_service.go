@@ -116,7 +116,7 @@ func (u *userService) AddFriend(userFriendRequest *request.FriendRequest) error 
 	var friend *model.User
 	db.First(&friend, "username = ?", userFriendRequest.FriendUsername)
 	if nullId == friend.Id {
-		return errors.New("已添加该好友")
+		return errors.New("无法查询到该好友")
 	}
 
 	userFriend := model.UserFriend{
